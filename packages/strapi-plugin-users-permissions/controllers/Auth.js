@@ -446,9 +446,7 @@ module.exports = {
 
     const roleType = params.role || settings.default_role
 
-    const role = await strapi
-    query('role', 'users-permissions')
-      .findOne({ type: roleType }, []);
+    const role = await strapi.query('role', 'users-permissions').findOne({ type: roleType }, []);
 
     if (!role) {
       return ctx.badRequest(
